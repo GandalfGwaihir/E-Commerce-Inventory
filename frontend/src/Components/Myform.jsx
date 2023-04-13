@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from 'react';
+import { baseInstance } from "../AxiosInstance";
 
 function MyForm() {
   const [inputs, setInputs] = useState({});
@@ -10,9 +11,11 @@ function MyForm() {
     setInputs(values => ({...values, [name]: value}))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(inputs);
+    const response = await baseInstance.post('/customer/addCustomer', inputs);
+    console.log(response);
   }
 
   return (
@@ -29,7 +32,7 @@ function MyForm() {
       <label className="First">Enter your Last name:
       <input className="second"
         type="text" 
-        name="Last_name" 
+        name="last_name" 
         value={inputs.Last_name || ""} 
         onChange={handleChange}
       />
@@ -37,8 +40,8 @@ function MyForm() {
       <label className="First">Enter City Name:
       <input className="second"
         type="text" 
-        name="City" 
-        value={inputs.Cityname || ""} 
+        name="city" 
+        value={inputs.cityname || ""} 
         onChange={handleChange}
       />
       </label>
@@ -53,8 +56,8 @@ function MyForm() {
       <label className="First">Enter Country Name:
       <input className="second"
         type="text" 
-        name="Country" 
-        value={inputs.Country || ""} 
+        name="country" 
+        value={inputs.country || ""} 
         onChange={handleChange}
       />
       </label>
