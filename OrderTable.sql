@@ -127,3 +127,17 @@ create trigger order_log after insert
      @@
  select * from log;
      @@
+
+
+DELIMITER;
+call insertOrder(27, "OrderName",1234567890, 1000, 10, "afvdv");
+
+drop Procedure `insertOrder`;
+
+DELIMITER %
+
+CREATE PROCEDURE `insertOrder`(IN customerid INT,IN orderName VARCHAR(100), IN customerNumber VARCHAR(225), IN price INT, IN deliveryTime INT, IN address VARCHAR(20))
+BEGIN
+        INSERT INTO Order1 VALUES(customerid, orderName, customerNumber,  price , deliveryTime , address );
+    END %
+

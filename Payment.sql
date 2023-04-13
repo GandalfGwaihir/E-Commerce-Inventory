@@ -33,3 +33,10 @@ BEGIN
     SELECT * FROM Payment;
 END
 
+DELIMITER $$
+CREATE PROCEDURE insertPayment(IN paymentid int, IN customerid int ,IN  method varchar(100), IN paymentdate date, IN Price INT(10))
+    BEGIN
+        INSERT INTO Payment VALUES( paymentid,method, paymentdate  , Price);
+    END $$
+DELIMITER ;
+

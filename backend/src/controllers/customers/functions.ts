@@ -2,10 +2,18 @@ import { Request, Response } from "express";
 import { execute } from "../../db/mysql.connector";
 import { CustomerQueries } from "./queries";
 import { ICustomerType } from "../../models/customer.models";
+import { ApiResponse } from "../../../types";
 
 export const getCustomers = async (req: Request, res: Response) => {
     try {
-        const response = await execute<ICustomerType[]>(CustomerQueries.GetCustomers, []);
+        const customers = await execute<ICustomerType[]>(CustomerQueries.GetCustomers, []);
+        const response: ApiResponse<ICustomerType[]> = {
+            data : {
+                value: customers,
+            },
+            statusCode: 200,
+            statusMessage: "Customers fetched successfully"
+        }
         return res.status(200).json(response);
     } catch (error) {
         res.status(400).json({
@@ -20,15 +28,22 @@ export const getCustomerWithBounds = async (req: Request, res: Response) => {
         const maxResultsOnPage = 5;
         const lowerBound = (pageNo - 1) * maxResultsOnPage;
         const upperBound = pageNo * maxResultsOnPage;
-        const response = await execute<[ICustomerType[], any]>(CustomerQueries.GetCustomersWithBounds, [lowerBound, upperBound])
-        return res.status(200).json({
-                customers: response[0],
-                length: response[0].length,
+        const customers = await execute<[ICustomerType[], any]>(CustomerQueries.GetCustomersWithBounds, [lowerBound, upperBound])
+        const infoBody = {
+                length: customers[0].length,
                 currentPage: pageNo,
                 nextPage: pageNo + 1,
-                isLastPage: response[0].length <= maxResultsOnPage
+                isLastPage: customers[0].length < maxResultsOnPage
             }
-        )
+        const response: ApiResponse<ICustomerType[]> = {
+            data: {
+                value: customers[0],
+                others: infoBody
+            },
+            statusCode: 200,
+            statusMessage: "Customers returned successfully"
+        } 
+        return res.status(200).json(response);
     } catch (error) {
         res.status(400).json({
             error: error

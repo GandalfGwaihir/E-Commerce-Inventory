@@ -105,3 +105,12 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS getCustomersWithBounds;
 
 call getCustomersWithBounds(10, 20);
+
+DELIMITER $$
+CREATE PROCEDURE insertOrder(IN orderName VARCHAR(100), IN customerNumber VARCHAR(225), IN price INT, IN deliveryTime INT, IN address VARCHAR(20))
+    BEGIN
+        INSERT INTO Order1 VALUES( orderName, customerNumber,  price , deliveryTime , address );
+    END $$
+DELIMITER;
+
+drop PROCEDURE insertOrder ;
