@@ -13,9 +13,9 @@ function MyForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs);
-    const response = await baseInstance.post('/customer/addCustomer', inputs);
-    console.log(response);
+    const {data} = await baseInstance.post('/customer/addCustomer', inputs)
+    console.log(inputs)
+    console.log(data);
   }
 
   return (
@@ -35,13 +35,12 @@ function MyForm() {
         name="last_name" 
         value={inputs.Last_name || ""} 
         onChange={handleChange}
-      />
-      </label>
+      /> </label>
       <label className="First">Enter City Name:
       <input className="second"
         type="text" 
         name="city" 
-        value={inputs.cityname || ""} 
+        value={inputs.Cityname || ""} 
         onChange={handleChange}
       />
       </label>
@@ -57,7 +56,7 @@ function MyForm() {
       <input className="second"
         type="text" 
         name="country" 
-        value={inputs.country || ""} 
+        value={inputs.Country || ""} 
         onChange={handleChange}
       />
       </label>

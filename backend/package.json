@@ -17,7 +17,6 @@
     "@types/node": "^18.15.11"
   },
   "scripts": {
-    "start": "node ./dist/index.js",
     "build": "rm -rf dist index.js tsc",
     "server": "ts-node-dev ./src/index.ts"
   }

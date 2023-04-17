@@ -8,6 +8,7 @@ import Payment from "./payment.jsx";
 import Product from "./Product.jsx";
 import Body from "./Body.jsx";
 import Customers from "./Customers.jsx";
+import Showorders from "./showorders.jsx";
 
 
 function App()
@@ -26,7 +27,7 @@ function App()
       <Route path={'/'} element={<Body />} />
       <Route path={'/'} element={<Body />} />
       <Route path={'/customers'} element={<Customers />} />
-
+      <Route path={'/showOrder'} element ={<Showorders />} />
     </Routes>
     </BrowserRouter>
   )

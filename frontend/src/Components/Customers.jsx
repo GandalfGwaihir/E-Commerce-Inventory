@@ -7,7 +7,7 @@ const Customers = () => {
     useEffect(() => {
         const getCust = async () => {
             const {data} = await baseInstance.get('/customer/getCustomers');
-            setCustomers(data);
+            setCustomers(data.data.value);
             console.log(data)
         }
         getCust();
@@ -16,9 +16,11 @@ const Customers = () => {
     <div>
          <table>
         <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Gender</th>
+          <th>FirstNmae</th>
+          <th>LastName</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Email-id</th>
         </tr>
         {customers && customers.map((val, key) => {
           return (
@@ -26,21 +28,19 @@ const Customers = () => {
               <td>{val.first_name}</td>
               <td>{val.last_name}</td>
               <td>{val.city}</td>
+              <td>{val.state}</td>
+              <td>{val.email_id}</td>
+              <hr />
+              <button  className='bt'>Delete</button>
+              <a href='login'>
+              <button class="bt">
+            Update
+        </button>
+    </a>
             </tr>
           )
         })}
       </table>
-        {customers && 
-            customers.map((customer) => {
-                return (
-                    <div>
-                        {customer?.first_name}
-                        {customer?.last_name}
-                        {customer?.city}
-                    </div>
-                )
-            })
-        }
     </div>
   )
 }
