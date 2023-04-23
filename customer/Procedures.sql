@@ -114,3 +114,12 @@ CREATE PROCEDURE insertOrder(IN orderName VARCHAR(100), IN customerNumber VARCHA
 DELIMITER;
 
 drop PROCEDURE insertOrder ;
+
+DELIMITER $$
+CREATE PROCEDURE deleteCustomer(IN customerId INT)
+    BEGIN
+        DELETE FROM customer 
+        WHERE customer.customer_id = customerId; 
+    END $$
+DELIMITER;
+

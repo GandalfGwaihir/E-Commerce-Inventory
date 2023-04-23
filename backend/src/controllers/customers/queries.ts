@@ -6,7 +6,7 @@ export const CustomerQueries = {
             JOIN addresses
             ON customer.customer_id = addresses.address_id
     `,
-    GetCustomersWithBounds:`
+    GetCustomersWithBounds: `
         call \`getCustomersWithBounds\`(?, ?);
     `,
     GetCustomerById: `
@@ -18,9 +18,12 @@ export const CustomerQueries = {
         WHERE customer.customer_id = ?
     `,
     InsertCustomer: `
-    call \`insertCustomer\`(?, ?, ?, ?, ?, ?, ?, ?, ?);
+        call \`insertCustomer\`(?, ?, ?, ?, ?, ?, ?, ?, ?);
     `,
     UpdateCustomer: `
-    call \`updateCustomer\`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        call \`updateCustomer\`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     `,
+    DeleteCustomer: `
+        DELETE FROM customer WHERE customer_id = ?;
+    `
 }

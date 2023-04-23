@@ -4,7 +4,7 @@ import OrderRoutes from './routes/order.routes'
 
 
 const router = express.Router();
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
     res.status(200).send('API IS RUNNING');
 });
 

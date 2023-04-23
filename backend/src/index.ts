@@ -6,7 +6,7 @@ import 'dotenv/config';
 
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 // create database pool
 MySQLConnector.init();
@@ -21,7 +21,7 @@ app.use(cors());
 
 app.use('/api/', apiRoutes);
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.status(200).send('SERVER IS RUNNING');
 });
 

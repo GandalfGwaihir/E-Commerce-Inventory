@@ -4,7 +4,7 @@ import { getOrders, insertOrder } from "../controllers/order/functions";
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
     res.status(200).send('ORDER API IS RUNNING');
 });
 
