@@ -9,7 +9,7 @@ import Product from "./Product.jsx";
 import Body from "./Body.jsx";
 import Customers from "./Customers.jsx";
 import Showorders from "./showorders.jsx";
-
+import Home from "./Home.jsx";
 
 function App()
 {
@@ -22,10 +22,10 @@ function App()
       <Route path={'/Order'} element={<Main />} />
       <Route path={'/payment'} element={<Payment />} />
       <Route path={'/product'} element={<Product />} />
-      <Route path={'/'} element={<Header />} />
+      <Route path={'/'} element={<Home />} />
+      {/* <Route path={'/'} element={<Body />} />
       <Route path={'/'} element={<Footer />} />
-      <Route path={'/'} element={<Body />} />
-      <Route path={'/'} element={<Body />} />
+      <Route path={'/'} element={<Body />} /> */}
       <Route path={'/customers'} element={<Customers />} />
       <Route path={'/showOrder'} element ={<Showorders />} />
     </Routes>
