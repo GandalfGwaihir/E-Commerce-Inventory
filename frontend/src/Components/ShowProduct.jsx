@@ -5,14 +5,15 @@ import './App.css';
 
 
 const Showpayments = () => {
-    const [products, setShowpayments] = useState();
+    const [order, setShoworders] = useState();
     useEffect(() => {
-        const getProducts = async () => {
-            const {data} = await baseInstance.get('/products/getProducts');
-            setShowpayments(data.data.value);
+        const getorder = async () => {
+            const {data} = await baseInstance.get('/products/getProduct');
+    
+            setShoworders(data.data.value);
             console.log(data)
         }
-        getProducts();
+        getorder();
     }, [])
 
     const buyNow = async (product_id) => {
