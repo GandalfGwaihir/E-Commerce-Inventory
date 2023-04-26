@@ -25,5 +25,8 @@ export const CustomerQueries = {
     `,
     DeleteCustomer: `
         DELETE FROM customer WHERE customer_id = ?;
-    `
+    `,
+    GetProductByEmail: `
+        CALL \`getProductByEmail\`(?);
+    `,
 }

@@ -23,5 +23,11 @@ export const ProductQueries = {
 
     DeleteProduct: `
         DELETE FROM product WHERE product_id = ?;
+    `,
+    BuyProduct: `
+        CALL \`buyProduct\`(?, ?);
+    `,
+    GetEmailByProduct:`
+        CALL \`getEmailByProductId\`(?);
     `
-}
+} 

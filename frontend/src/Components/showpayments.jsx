@@ -3,39 +3,41 @@ import { baseInstance } from '../AxiosInstance';
 import './App.css';
 
 const Showpayments = () => {
-    const [order, setShowpayments] = useState();
+    const [order, setShoworders] = useState();
     useEffect(() => {
-        const getproducts = async () => {
-            const {data} = await baseInstance.get('/products/getProducts');
+        const getorder = async () => {
+            const {data} = await baseInstance.get('/products/getProduct');
     
-            setShowpayments(data.data.value);
+            setShoworders(data.data.value);
             console.log(data)
         }
-        getproducts();
+        getorder();
     }, [])
   return (
-    <div>
+    <div id="products">
          <table class="headingtop">
         <tr class="heading1">
           <th>Product description</th>
           <th>Product Category</th>
           <th>Product Quantity</th>
           <th>Product Name</th>
+          <th> Product Price</th>
         </tr>
-        {order && order.map((val, key) => {
+        {products && products.map((val, key) => {
           return (
             <tr key={key}>
               <td>{val.product_description}</td>
               <td>{val.category}</td>
               <td>{val.quantity}</td>
               <td>{val.product_name}</td>
+              <td>{val.price}</td>
               <hr />
               <button  className="bt1">
                 Delete
                 </button>
               <a href='updated'>
               <button class="bt1">
-               Update
+               Buy now
               </button>
                </a>
             </tr>
