@@ -236,3 +236,32 @@ CREATE TABLE product(
     
     product_name VARCHAR(30),
     supplier_id INT NOT NULL);
+
+
+ALTER TABLE product ADD customer_email_id varchar(50) 
+
+DELIMITER $$
+CREATE PROCEDURE getProductByEmail(IN customerEmailId varchar(50) )
+    BEGIN
+        SELECT * FROM product where product.customer_email_id = customerEmailId;
+    END $$
+DELIMITER;
+
+DELIMITER $$
+CREATE PROCEDURE buyProduct(IN productId INT, IN customerEmailId varchar(50) )
+    BEGIN
+        UPDATE product
+        SET product.customer_email_id = customerEmailId
+        where product.product_id = productId;
+    END $$
+DELIMITER;
+
+UPDATE product
+SET product.customer_email_id = 'soham.ratnaparkh@gmail.com'
+where product.product_id = 2;
+
+CALL getProductByEmail('soham.ratnaparkh@gmail.com');
+
+CALL buyProduct(3, 'tejas.rokade21@vit.edu');
+
+CALL getProductByEmail('tejas.rokade21@vit.edu'); 
