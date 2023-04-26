@@ -17,7 +17,7 @@ insert into Payment(paymentid,method,paymentdate,Amount) values  (66,'CreditCard
  SELECT * FROM Payment WHERE method='COD' AND Price=2000;
  SELECT * FROM Payment WHERE method LIKE 'C%';
 
-//Procedures
+/*Procedures */
 //Procedure to retrieve a particular payment
 CREATE PROCEDURE `get_payment` (
     IN `p_paymentid` INT
