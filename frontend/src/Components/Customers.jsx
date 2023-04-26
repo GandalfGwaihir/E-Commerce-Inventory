@@ -62,6 +62,10 @@ const Customers = () => {
                 <a href="updatedcust">
                   <button class="bt">Update</button>
                 </a>
+                <a href={`orderhistory/${val.email_id}`}>
+                <button class="bt"
+                >Show Purchases</button>
+                </a>
               </tr>
             );
           })}

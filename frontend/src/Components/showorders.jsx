@@ -34,6 +34,7 @@ const Showorders = () => {
                 <a href="updated">
                   <button class="bt1">Update</button>
                 </a>
+                
               </tr>
             );
           })}

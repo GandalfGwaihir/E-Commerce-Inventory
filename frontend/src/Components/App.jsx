@@ -13,6 +13,7 @@ import Home from "./Home.jsx";
 import Updatedorder from "./updateorder.jsx";
 import Updatedcustomer from "./updatedcustomer.jsx";
 import Showpayments from "./ShowProduct.jsx";
+import ShowOrderHistory from "./ShowOrderHistory.jsx";
 
 function App()
 {
@@ -34,6 +35,8 @@ function App()
       <Route path={'/customers'} element={<Customers />} />
       <Route path={'/showOrder'} element ={<Showorders />} />
       <Route path={'/showpayments'} element={<Showpayments />} />
+      <Route path={'/orderhistory/:email'} element={<ShowOrderHistory />} />
+
     </Routes>
     </BrowserRouter>
   )
