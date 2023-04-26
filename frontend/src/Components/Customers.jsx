@@ -35,8 +35,8 @@ const Customers = () => {
 
   return (
     <div>
-      <table>
-        <tr>
+      <table className="headingtop">
+        <tr class="heading1">
           <th>FirstNmae</th>
           <th>LastName</th>
           <th>City</th>
@@ -46,7 +46,7 @@ const Customers = () => {
         {customers &&
           customers.map((val, key) => {
             return (
-              <tr key={key}>
+              <tr  key={key}>
                 <td>{val.first_name}</td>
                 <td>{val.last_name}</td>
                 <td>{val.city}</td>
@@ -59,7 +59,7 @@ const Customers = () => {
                 >
                   Delete
                 </button>
-                <a href="login">
+                <a href="updatedcust">
                   <button class="bt">Update</button>
                 </a>
               </tr>
