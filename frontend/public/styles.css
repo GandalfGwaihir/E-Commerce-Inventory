@@ -186,3 +186,33 @@ a:hover {
   width: 100%;
   border-radius: 5%;
 }
+.homescreen{
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  background-color: #f50707;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  margin-top: 30px;
+  margin-left: 30px;
+  color: white;
+  
+}
+a{
+  color: black;
+}
+.mainhs{
+  display: flex;
+}
+.homescreen:hover {background-color: #ee3c05}
+
+.homescreen:active {
+  background-color: #f14107;
+  box-shadow: 0 5px #f10707;
+  transform: translateY(4px);
+}
