@@ -5,7 +5,7 @@ import productRoutes from './routes/product.routes';
 
 const router = express.Router();
 router.get('/', (_req, res) => {
-    res.status(200).send('API IS RUNNING');
+    res.status(200).send(`API IS RUNNING at port = ${process.env.PORT}`);
 });
 
 router.use('/customers', CustomerRoutes); /* /api/customer */
