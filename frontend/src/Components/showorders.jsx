@@ -15,8 +15,8 @@ const Showorders = () => {
     }, [])
   return (
     <div>
-         <table>
-        <tr>
+         <table class="headingtop">
+        <tr class="heading1">
           <th>OrderName</th>
           <th>Price</th>
           <th>DeliveryTime</th>
@@ -30,14 +30,16 @@ const Showorders = () => {
               <td>{val.DeliveryTimeDays}</td>
               <td>{val.CustomerAdd}</td>
               <hr />
-              <button  className='bt'>Delete</button>
-              <a href='order'>
-              <button class="bt">
+              <button  className="bt1">
+                Delete
+                </button>
+              <a href='updated'>
+              <button class="bt1">
                Update
               </button>
                </a>
             </tr>
-          )
+          );
         })}
       </table>
     </div>

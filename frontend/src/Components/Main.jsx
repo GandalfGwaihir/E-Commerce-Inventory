@@ -60,7 +60,7 @@ function Main() {
             />
           </label>
           <label className="First">
-            Enter Custoemr Address:
+            Enter Customer Address:
             <input
               className="second"
               type="text"

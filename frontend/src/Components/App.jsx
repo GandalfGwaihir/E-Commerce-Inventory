@@ -10,7 +10,8 @@ import Body from "./Body.jsx";
 import Customers from "./Customers.jsx";
 import Showorders from "./showorders.jsx";
 import Home from "./Home.jsx";
-
+import Updatedorder from "./updateorder.jsx";
+import Updatedcustomer from "./updatedcustomer.jsx";
 function App()
 {
    
@@ -20,6 +21,8 @@ function App()
     <Routes>
       <Route path={'/login'} element={<MyForm />} />
       <Route path={'/Order'} element={<Main />} />
+      <Route path={"/updated"} element={<Updatedorder />} />
+      <Route path={"/updatedcust"} element={<Updatedcustomer />} />
       <Route path={'/payment'} element={<Payment />} />
       <Route path={'/product'} element={<Product />} />
       <Route path={'/'} element={<Home />} />
