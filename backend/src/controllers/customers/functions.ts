@@ -111,3 +111,16 @@ export const deleteCustomer = async (req: Request, res: Response) => {
         return res.status(404).json({ error: error })
     }
 }
+
+export const getProductByEmail = async (req: Request, res: Response) => {
+    try {
+        const {email_id} = req.body;
+        const response = await execute<any>(CustomerQueries.GetProductByEmail, [email_id])
+        if (response)
+            return res.status(200).json(response[0]);
+        else
+            return res.status(400).json({ message: "No products found" });
+    } catch (error) {
+        return res.status(404).json({ error: error })
+    }
+}

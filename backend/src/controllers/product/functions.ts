@@ -115,3 +115,36 @@ export const deleteProduct = async (req: Request, res: Response) => {
         return res.status(404).json({ error: error })
     }
 }
+
+export const buyProduct = async (req: Request, res: Response) => {
+    try {
+        const {product_id, customer_email_id} : {product_id: number, customer_email_id:string} = req.body;
+        const response = await execute<any>(ProductQueries.BuyProduct, [product_id, customer_email_id])
+        if (response.affectedRows > 0)
+            return res.status(200).json({ message: "Product bought successfully" });
+        else
+            return res.status(400).json({ message: "Product not bought" });
+    } catch (error) {
+        return res.status(404).json({ error: error })
+    }
+    /**
+     * demo body request
+     * {
+     * "product_id": 1,
+     * "customer_email_id": "
+     * }
+     */
+}
+
+export const getEmailByProduct = async (req: Request, res: Response) => {
+    try {
+        const product_id = Number(req.params.product_id);
+        const response = await execute<any>(ProductQueries.GetEmailByProduct, [product_id])
+        if (response)
+            return res.status(200).json({ emails: response[0], message: "Emails fetched successfully" });
+        else
+            return res.status(400).json({ message: "Failed to fetch responses" });
+    } catch (error) {
+        return res.status(404).json({ error: error })
+    }
+}

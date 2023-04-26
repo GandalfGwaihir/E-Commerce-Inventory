@@ -243,7 +243,9 @@ ALTER TABLE product ADD customer_email_id varchar(50)
 DELIMITER $$
 CREATE PROCEDURE getProductByEmail(IN customerEmailId varchar(50) )
     BEGIN
-        SELECT productBuyers.product_id FROM `productBuyers` where productBuyers .customer_email_id = customerEmailId;
+        SELECT * FROM `productBuyers`
+        INNER JOIN product ON product.product_id = productBuyers.product_id 
+        where productBuyers.customer_email_id = customerEmailId;
     END $$
 DELIMITER;
 
@@ -252,6 +254,11 @@ DROP PROCEDURE getProductByEmail;
 DELIMITER $$
 CREATE PROCEDURE buyProduct(IN productId INT, IN customerEmailId varchar(50) )
     BEGIN
+        if (SELECT COUNT(customer_id) from customer where customer.email_id = customerEmailId) = 0
+        then 
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Customer does not exist';
+        END IF;          
+
         if (SELECT quantity FROM product where product.product_id = productId) > 0 then
             UPDATE product
             SET product.quantity = product.quantity - 1
@@ -276,13 +283,15 @@ SET product.customer_email_id = 'soham.ratnaparkh@gmail.com'
 where product.product_id = 2;
 
 CALL getProductByEmail('soham.ratnaparkh@gmail.com');
+CALL getProductByEmail('soham.ratnaparkh@gmail.com');
 
 CALL buyProduct(1, 'tejas.rokade21@vit.edu');
 CALL buyProduct(3, 'tejas.rokade21@vit.edu');
-CALL buyProduct(1, 'soham.ratnaparkhi@gmail.com');
+CALL buyProduct(1, 'soham.ratnaparkh@gmail.com');
 
 
 CALL getProductByEmail('tejas.rokade21@vit.edu'); 
+CALL getProductByEmail('abcd.efg@g.c'); 
 
 DELIMITER $$
 CREATE PROCEDURE getEmailByProductId(IN productId INT)
@@ -291,7 +300,7 @@ CREATE PROCEDURE getEmailByProductId(IN productId INT)
     END $$
 DELIMITER;
 
-CALL getEmailByProductId(2);
+CALL getEmailByProductId(1);
 
 CREATE TABLE productBuyers (
     product_id INT,
