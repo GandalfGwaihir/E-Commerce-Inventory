@@ -14,7 +14,7 @@ export const ProductQueries = {
         WHERE customer.customer_id = ?
     `,
     InsertProduct: `
-        call \`insertCustomer\`(?, ?, ?, ?, ?, ?, ?);
+        call \`insertProduct\`(?, ?, ?, ?, ?, ?, ?);
     `,
 
     UpdateProduct: `
