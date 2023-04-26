@@ -17,6 +17,7 @@ function Product() {
     const { data } = await baseInstance.post("/products/addProduct", inputs);
     console.log(inputs);
     console.log(data);
+    
   };
 
   return (

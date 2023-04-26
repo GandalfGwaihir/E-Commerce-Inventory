@@ -2,6 +2,7 @@ import React from "react";
 import Customers from "./Customers";
 import Showorders from "./showorders";
 import Showpayments from "./ShowProduct";
+import ShowProducts from "./ShowProduct";
 
 function Body() {
   return (
@@ -19,7 +20,7 @@ function Body() {
       {/* <h1 className="Title2"> SHOW ORDER DETAILS</h1>
       <Showorders /> */}
       <h1 className="Title2">Show Product Details</h1>
-      <Showpayments />
+      <ShowProducts />
     </body>
   );
 }

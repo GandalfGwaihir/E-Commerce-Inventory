@@ -4,13 +4,13 @@ import './App.css';
 
 
 
-const Showpayments = () => {
-    const [order, setShoworders] = useState();
+const ShowProducts = () => {
+    const [products, setProducts] = useState();
     useEffect(() => {
         const getorder = async () => {
-            const {data} = await baseInstance.get('/products/getProduct');
+            const {data} = await baseInstance.get('/products/getProducts');
     
-            setShoworders(data.data.value);
+            setProducts(data.data.value);
             console.log(data)
         }
         getorder();
@@ -23,6 +23,7 @@ const Showpayments = () => {
             customer_email_id
         });
         console.log(data);
+        alert(data?.message)
     }
     
   return (
@@ -62,4 +63,4 @@ const Showpayments = () => {
   )
 }
 
-export default Showpayments;
+export default ShowProducts;
