@@ -6,7 +6,7 @@ const Showpayments = () => {
     const [order, setShoworders] = useState();
     useEffect(() => {
         const getorder = async () => {
-            const {data} = await baseInstance.get('/Products/getProduct');
+            const {data} = await baseInstance.get('/products/getProduct');
     
             setShoworders(data.data.value);
             console.log(data)

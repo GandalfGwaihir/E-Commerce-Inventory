@@ -12,10 +12,10 @@ function Main() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const {data} = await baseInstance.post('/order/insertOrder', inputs)
-    console.log(inputs)
+    const { data } = await baseInstance.post("/orders/insertOrder", inputs);
+    console.log(inputs);
     console.log(data);
-  }
+  };
 
   return (
     <>

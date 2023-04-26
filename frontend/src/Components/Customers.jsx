@@ -6,7 +6,7 @@ const Customers = () => {
   const [customers, setCustomers] = useState();
   useEffect(() => {
     const getCust = async () => {
-      const { data } = await baseInstance.get("/customer/getCustomers");
+      const { data } = await baseInstance.get("/customers/getCustomers");
       setCustomers(data.data.value);
       console.log(data);
     };
@@ -21,7 +21,7 @@ const Customers = () => {
       return;
     }
     const { data, error } = await baseInstance.delete(
-      `/customer/deleteCustomer/${id}`
+      `/customers/deleteCustomer/${id}`
     );
     if (error) {
       console.log(error);
@@ -34,7 +34,7 @@ const Customers = () => {
   };
 
   return (
-    <div>
+    <div id="customers">
       <table className="headingtop">
         <tr class="heading1">
           <th>FirstNmae</th>
@@ -46,7 +46,7 @@ const Customers = () => {
         {customers &&
           customers.map((val, key) => {
             return (
-              <tr  key={key}>
+              <tr key={key}>
                 <td>{val.first_name}</td>
                 <td>{val.last_name}</td>
                 <td>{val.city}</td>

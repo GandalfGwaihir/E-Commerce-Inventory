@@ -4,5 +4,6 @@ export const OrderQueries = {
     `,
     GetOrders: `
         SELECT * FROM Order1;
-    `
+    `,
+
 }
