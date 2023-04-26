@@ -243,18 +243,33 @@ ALTER TABLE product ADD customer_email_id varchar(50)
 DELIMITER $$
 CREATE PROCEDURE getProductByEmail(IN customerEmailId varchar(50) )
     BEGIN
-        SELECT * FROM product where product.customer_email_id = customerEmailId;
+        SELECT productBuyers.product_id FROM `productBuyers` where productBuyers .customer_email_id = customerEmailId;
     END $$
 DELIMITER;
+
+DROP PROCEDURE getProductByEmail;
 
 DELIMITER $$
 CREATE PROCEDURE buyProduct(IN productId INT, IN customerEmailId varchar(50) )
     BEGIN
-        UPDATE product
-        SET product.customer_email_id = customerEmailId
-        where product.product_id = productId;
+        if (SELECT quantity FROM product where product.product_id = productId) > 0 then
+            UPDATE product
+            SET product.quantity = product.quantity - 1
+            where product.product_id = productId;
+        INSERT INTO `productBuyers` VALUES (productId, customerEmailId);
+        end if;
     END $$
 DELIMITER;
+
+DROP PROCEDURE `buyProduct`;
+
+DELIMITER $$    
+CREATE PROCEDURE getAvailableProductById(IN productId INT)
+    BEGIN
+        SELECT * FROM product where product.product_id = productId ;
+    END $$
+DELIMITER;
+
 
 UPDATE product
 SET product.customer_email_id = 'soham.ratnaparkh@gmail.com'
@@ -262,6 +277,23 @@ where product.product_id = 2;
 
 CALL getProductByEmail('soham.ratnaparkh@gmail.com');
 
+CALL buyProduct(1, 'tejas.rokade21@vit.edu');
 CALL buyProduct(3, 'tejas.rokade21@vit.edu');
+CALL buyProduct(1, 'soham.ratnaparkhi@gmail.com');
+
 
 CALL getProductByEmail('tejas.rokade21@vit.edu'); 
+
+DELIMITER $$
+CREATE PROCEDURE getEmailByProductId(IN productId INT)
+    BEGIN
+        SELECT productBuyers.customer_email_id FROM `productBuyers` where productBuyers .product_id = productId;
+    END $$
+DELIMITER;
+
+CALL getEmailByProductId(2);
+
+CREATE TABLE productBuyers (
+    product_id INT,
+    customer_email_id varchar(50)
+);
