@@ -13,6 +13,7 @@ function Product() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    inputs['supplier_id'] = 5;
     const { data } = await baseInstance.post("/products/addProduct", inputs);
     console.log(inputs);
     console.log(data);

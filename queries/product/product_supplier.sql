@@ -268,6 +268,9 @@ CREATE PROCEDURE buyProduct(IN productId INT, IN customerEmailId varchar(50) )
     END $$
 DELIMITER;
 
+call `buyProduct`(1, 'tejas.rokade21@vit.edu');
+
+
 DROP PROCEDURE `buyProduct`;
 
 DELIMITER $$    

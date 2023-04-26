@@ -12,7 +12,7 @@ import Showorders from "./showorders.jsx";
 import Home from "./Home.jsx";
 import Updatedorder from "./updateorder.jsx";
 import Updatedcustomer from "./updatedcustomer.jsx";
-import Showpayments from "./showpayments.jsx";
+import Showpayments from "./ShowProduct.jsx";
 
 function App()
 {

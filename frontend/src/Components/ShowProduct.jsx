@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { baseInstance } from '../AxiosInstance';
 import './App.css';
 
+
+
 const Showpayments = () => {
     const [products, setShowpayments] = useState();
     useEffect(() => {
@@ -12,6 +14,16 @@ const Showpayments = () => {
         }
         getProducts();
     }, [])
+
+    const buyNow = async (product_id) => {
+        const customer_email_id = prompt("Enter your email id");
+        const {data} = await baseInstance.post('/products/buyProduct', {
+            product_id,
+            customer_email_id
+        });
+        console.log(data);
+    }
+    
   return (
     <div id="products">
          <table class="headingtop">
@@ -34,11 +46,13 @@ const Showpayments = () => {
               <button  className="bt1">
                 Delete
                 </button>
-              <a href='updated'>
-              <button class="bt1">
+              
+              <button class="bt1"
+              onClick={() => buyNow(val.product_id)}
+              >
                Buy now
               </button>
-               </a>
+               
             </tr>
           );
         })}
