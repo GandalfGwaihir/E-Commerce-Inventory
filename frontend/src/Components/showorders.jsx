@@ -7,7 +7,6 @@ const Showorders = () => {
   useEffect(() => {
     const getorder = async () => {
       const { data } = await baseInstance.get("/orders/getOrders");
-
       setShoworders(data.data.value);
       console.log(data);
     };
