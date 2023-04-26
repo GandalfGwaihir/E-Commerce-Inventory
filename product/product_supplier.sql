@@ -213,3 +213,26 @@ SELECT product_supplier_function();
 
 
 
+/* procedure for insertProduct and table */
+DELIMITER $$
+CREATE PROCEDURE insertProduct(IN product_id BIGINT, IN product_description VARCHAR(100) , IN category VARCHAR(20), IN quantity INT, IN price INT, IN product_name VARCHAR(20), IN supplier_id INT)
+    BEGIN
+        SET @lastProductId = (SELECT product_id FROM product ORDER BY product_id DESC LIMIT 1);
+        SET @newProductId = @lastCustomerId + 1;
+        INSERT INTO product VALUES (@newProductId, product_description, category, quantity, price, product_name, supplier_id);
+   END $$
+DELIMITER;
+
+
+
+/*Table */
+
+CREATE TABLE product(
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_description VARCHAR(1000),
+    category VARCHAR(20),
+    quantity INT,
+    price INT,
+    
+    product_name VARCHAR(30),
+    supplier_id INT NOT NULL);

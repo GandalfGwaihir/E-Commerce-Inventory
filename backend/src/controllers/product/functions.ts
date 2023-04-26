@@ -52,6 +52,7 @@ export const getProduct = async (req: Request, res: Response) => {
             error: error
         })
     }
+    
 }
 
 export const addProduct = async (req: Request, res: Response) => {
@@ -69,6 +70,20 @@ export const addProduct = async (req: Request, res: Response) => {
     } catch (error) {
         return res.status(404).json({ error: error })
     }
+    /*
+    demo body request
+    {
+        "product_id": 1,
+        "product_description": "test",
+        "category": "test",
+        "quantity": 1,
+        "price": 1,
+        "product_name": "test",
+        "supplier_id": 1
+    }
+    
+    */ 
+    
 }
 
 export const updateProduct = async (req: Request, res: Response) => {
