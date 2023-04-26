@@ -5,7 +5,6 @@ CREATE PROCEDURE getCustomerByLastName(IN lastName VARCHAR(20))
 BEGIN 
 	SELECT * FROM names WHERE last_name = lastName;
 END$$ 
-
 DELIMITER ;
 
 CALL getCustomerByLastName('Messi');
