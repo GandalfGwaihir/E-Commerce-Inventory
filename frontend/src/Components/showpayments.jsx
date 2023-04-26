@@ -3,15 +3,15 @@ import { baseInstance } from '../AxiosInstance';
 import './App.css';
 
 const Showpayments = () => {
-    const [order, setShoworders] = useState();
+    const [order, setShowpayments] = useState();
     useEffect(() => {
-        const getorder = async () => {
-            const {data} = await baseInstance.get('/products/getProduct');
+        const getproducts = async () => {
+            const {data} = await baseInstance.get('/products/getProducts');
     
-            setShoworders(data.data.value);
+            setShowpayments(data.data.value);
             console.log(data)
         }
-        getorder();
+        getproducts();
     }, [])
   return (
     <div>
