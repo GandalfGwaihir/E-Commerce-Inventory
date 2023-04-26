@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from 'react';
+import { baseInstance } from "../AxiosInstance";
 
 function Product() {
   const [inputs, setInputs] = useState({});
@@ -10,9 +11,11 @@ function Product() {
     setInputs(values => ({...values, [name]: value}))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs);
+    const {data} = await baseInstance.post('/products/addProduct', inputs)
+    console.log(inputs)
+    console.log(data);
   }
 
   return (
@@ -39,14 +42,6 @@ function Product() {
         type="number" 
         name="quantity" 
         value={inputs.quantity|| ""} 
-        onChange={handleChange}
-      />
-      </label>
-      <label className="First">Thumbnail:
-      <input className="second"
-        type="text" 
-        name="thumbnail" 
-        value={inputs.thumbnail|| ""} 
         onChange={handleChange}
       />
       </label>

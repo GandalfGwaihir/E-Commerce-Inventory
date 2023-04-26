@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { baseInstance } from "../AxiosInstance";
 
 function Main() {
   const [inputs, setInputs] = useState({});
@@ -9,11 +10,12 @@ function Main() {
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs);
-  };
+    const {data} = await baseInstance.post('/order/insertOrder', inputs)
+    console.log(inputs)
+    console.log(data);
+  }
 
   return (
     <>
