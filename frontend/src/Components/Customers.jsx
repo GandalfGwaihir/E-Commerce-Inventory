@@ -37,7 +37,7 @@ const Customers = () => {
     <div id="customers">
       <table className="headingtop">
         <tr class="heading1">
-          <th>FirstNmae</th>
+          <th>FirstName</th>
           <th>LastName</th>
           <th>City</th>
           <th>State</th>
@@ -59,9 +59,9 @@ const Customers = () => {
                 >
                   Delete
                 </button>
-                {/* <a href="updatedcust">
+                <a href={`/updatedcust/${val.customer_id}`}>
                   <button class="bt">Update</button>
-                </a> */}
+                </a>
                 <a href={`orderhistory/${val.email_id}`}>
                 <button class="bt"
                 >Show Purchases</button>

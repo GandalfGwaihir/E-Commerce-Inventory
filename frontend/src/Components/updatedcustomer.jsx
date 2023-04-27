@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { baseInstance } from "../AxiosInstance";
+import { useParams } from "react-router-dom";
 
 function Updatedcustomer() {
   const [inputs, setInputs] = useState({});
-
+  const {id} = useParams();
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -13,9 +14,12 @@ function Updatedcustomer() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { data } = await baseInstance.post("/customers/addCustomer", inputs);
-    console.log(inputs);
-    console.log(data);
+    inputs["customer_id"] = id;
+    const { data } = await baseInstance.put(`/customers/updateCustomer/${id}`, inputs);
+    if (data.affectedRows > 0) {
+      alert("Customer updated successfully")
+      window.location.href('/')
+    }    
   };
 
   return (
@@ -37,7 +41,7 @@ function Updatedcustomer() {
             className="second"
             type="text"
             name="last_name"
-            value={inputs.Last_name || ""}
+            value={inputs.last_name || ""}
             onChange={handleChange}
           />{" "}
         </label>
@@ -47,7 +51,7 @@ function Updatedcustomer() {
             className="second"
             type="text"
             name="city"
-            value={inputs.Cityname || ""}
+            value={inputs.city || ""}
             onChange={handleChange}
           />
         </label>
@@ -67,7 +71,7 @@ function Updatedcustomer() {
             className="second"
             type="text"
             name="country"
-            value={inputs.Country || ""}
+            value={inputs.country || ""}
             onChange={handleChange}
           />
         </label>
