@@ -25,6 +25,12 @@ const ShowProducts = () => {
         console.log(data);
         alert(data?.message)
     }
+
+    const deleteProduct = async (product_id) => {
+        const {data} = await baseInstance.delete(`/products/deleteProduct/${product_id}`);
+        console.log(data);
+        alert(data?.message)
+    }
     
   return (
     <div id="products">
@@ -45,7 +51,8 @@ const ShowProducts = () => {
               <td>{val.product_name}</td>
               <td>{val.price}</td>
               <hr />
-              <button  className="bt1">
+              <button  className="bt1"
+              onClick={() => deleteProduct(val.product_id)}>
                 Delete
                 </button>
               
