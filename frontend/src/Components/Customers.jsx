@@ -59,9 +59,9 @@ const Customers = () => {
                 >
                   Delete
                 </button>
-                <a href="updatedcust">
+                {/* <a href="updatedcust">
                   <button class="bt">Update</button>
-                </a>
+                </a> */}
                 <a href={`orderhistory/${val.email_id}`}>
                 <button class="bt"
                 >Show Purchases</button>

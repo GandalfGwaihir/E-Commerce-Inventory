@@ -31,24 +31,31 @@ const ShowOrderHistory = () => {
 
 
   return (
-    <div>
+    <div > 
+      <table class="headingtop">
+        <tr class="heading1">
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Description</th>
+         
+        </tr>
         
     {showOrderHistory.map((val,key) => {
     
 return(
-            <div key={key}>
-                <p>{val.product_name}</p>
-                <p>{val.price}</p>
-                <p>{val.quantity}</p>
-                <p>{val.order_id}</p>
-                <p>{val.order_date}</p>
+            <tr key={key}>
+                <td>{val.product_name}</td>
+                <td>{val.price}</td>
+                <td>{val.product_description}</td>
+                
                 <hr/>
-            </div>
-        )
+            </tr>
+        );
     })}
 
+    </table>
     </div>
-  )
-}
+  );
+};
 
 export default ShowOrderHistory
