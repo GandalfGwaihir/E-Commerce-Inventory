@@ -87,7 +87,7 @@ CREATE PROCEDURE updateCustomer(IN customerId INT, IN email_id VARCHAR(100), IN 
     END $$
 DELIMITER;
 
-call updateCustomer(15, 'ema.il3@gmail.com', 1234567890, 'firstName', 'lastName', 'country', 'state', 'city', 'flat', 123456);
+call updateCustomer(15, 'ema.il32@gmail.com', 1234567890, 'firstName', 'lastName', 'country', 'state', 'city', 'flat', 123456);
 
 DELIMITER $$
 CREATE PROCEDURE getCustomersWithBounds(IN lowerBound INT, IN upperBound INT)

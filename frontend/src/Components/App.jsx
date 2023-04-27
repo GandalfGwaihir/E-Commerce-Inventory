@@ -25,7 +25,7 @@ function App()
       <Route path={'/login'} element={<MyForm />} />
       <Route path={'/Order'} element={<Main />} />
       <Route path={"/updated"} element={<Updatedorder />} />
-      <Route path={"/updatedcust"} element={<Updatedcustomer />} />
+      <Route path={"/updatedcust/:id"} element={<Updatedcustomer />} />
       <Route path={'/payment'} element={<Payment />} />
       <Route path={'/product'} element={<Product />} />
       <Route path={'/'} element={<Home />} />
