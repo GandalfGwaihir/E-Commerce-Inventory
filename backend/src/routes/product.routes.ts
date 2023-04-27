@@ -8,7 +8,7 @@ router.get('/', (_req, res) => {
 router.get('/getProducts', getProducts);
 router.get('/getProducts/:id', getProduct);
 router.post('/addProduct', addProduct);
-router.delete('/deleteProduct/:product', deleteProduct)
+router.delete('/deleteProduct/:product_id', deleteProduct)
 router.put('/updateProduct/:id', updateProduct)
 router.post('/buyProduct', buyProduct)
 router.get('/getBuyerEmails/:product_id', getEmailByProduct)
