@@ -66,10 +66,7 @@ const Customers = () => {
                 <button class="bt"
                 >Show Purchases</button>
                 </a>
-                <a href='updatedcust'>
-                <button class="bt"
-                >update</button>
-                </a>
+           
                 
               </tr>
             );
