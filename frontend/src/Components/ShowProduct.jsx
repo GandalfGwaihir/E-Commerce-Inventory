@@ -32,9 +32,9 @@ const ShowProducts = () => {
         <tr class="heading1">
           <th>Product description</th>
           <th>Product Category</th>
-          <th>Product Quantity</th>
-          <th>Product Name</th>
-          <th> Product Price</th>
+          <th>Quantity</th>
+          <th>Name</th>
+          <th>Price</th>
         </tr>
         {products && products.map((val, key) => {
           return (

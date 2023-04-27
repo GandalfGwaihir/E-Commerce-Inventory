@@ -111,7 +111,7 @@ footer p {
 
 .flex-items2 {
 
-  justify-content: flex-end;
+  justify-content:center;
   gap: 2px;
   text-decoration: none;
   color: black;
@@ -134,7 +134,7 @@ a:hover {
   table {
   border: 2px solid forestgreen;
   width: 800px;
-  height: 200px;
+  height: 20px;
   }
   
   th {
@@ -148,7 +148,8 @@ a:hover {
     color: #f14107;
     padding: 10px;
     display: inline-block;
-    margin-left: 5px;  
+    margin-left: 25px;  
+    margin-right: 4px;
 
 
   }
