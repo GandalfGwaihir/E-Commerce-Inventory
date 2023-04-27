@@ -16,6 +16,14 @@ function MyForm() {
     const { data } = await baseInstance.post("/customers/addCustomer", inputs);
     console.log(inputs);
     console.log(data);
+    if(data.affectedRows > 0){
+      alert("Customer Added Successfully")
+      //redirect to main page
+      window.location.href = "/";
+      }else{
+        alert("Enter Correct Details")
+      }
+  
   };
 
   return (

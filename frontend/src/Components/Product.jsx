@@ -17,9 +17,16 @@ function Product() {
     const { data } = await baseInstance.post("/products/addProduct", inputs);
     console.log(inputs);
     console.log(data);
+    if(data.affectedRows > 0){
+    alert("Product Added Successfully")
+    //redirect to main page
+    window.location.href = "/";
+    }else{
+      alert("Enter Correct Details")
+    }
     
   };
-
+  
   return (
     <div className="flex">
       <form onSubmit={handleSubmit}>

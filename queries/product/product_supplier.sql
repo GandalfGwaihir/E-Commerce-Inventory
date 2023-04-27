@@ -1,3 +1,4 @@
+-- Active: 1682526204001@@127.0.0.1@3306@DBMS
 CREATE TABLE product(
     product_id INT PRIMARY KEY AUTO_INCREMENT,
     product_description VARCHAR(1000),
@@ -309,3 +310,16 @@ CREATE TABLE productBuyers (
     product_id INT,
     customer_email_id varchar(50)
 );
+
+DELIMITER $$
+
+
+CREATE PROCEDURE updateProduct(IN product_id BIGINT, IN product_description VARCHAR(100) , IN category VARCHAR(20), IN quantity INT, IN price INT, IN product_name VARCHAR(20), IN supplier_id INT)
+    BEGIN
+    UPDATE product 
+    SET product.product_description = product_description, product.category = category, product.quantity = quantity, product.price = price, product.product_name = product_name, product.supplier_id = supplier_id
+    WHERE product.product_id = product_id;
+    END $$
+DELIMITER
+
+drop Procedure `updateProduct`

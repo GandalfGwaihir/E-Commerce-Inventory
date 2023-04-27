@@ -30,8 +30,36 @@ const ShowProducts = () => {
         const {data} = await baseInstance.delete(`/products/deleteProduct/${product_id}`);
         console.log(data);
         alert(data?.message)
+        //refresh page
+        window.location.reload();
+
+
+
     }
     
+    const updateProduct = async (product_id) => {
+        const product_name = prompt("Enter product name");
+        console.log(product_name)
+        const product_description = prompt("Enter product description");
+        const category = prompt("Enter category");
+        const quantity = prompt("Enter quantity");
+        const price = prompt("Enter price");
+        const supplier_id = 6
+        const {data} = await baseInstance.put(`/products/updateProduct/${product_id}`, {
+            product_id,
+            product_name,
+            product_description,
+            category,
+            quantity,
+            price,
+            supplier_id
+        });
+        console.log(data);
+        alert(data?.message)
+        //refresh page
+        window.location.reload();
+
+    }
   return (
     <div id="products">
          <table class="headingtop">
@@ -55,7 +83,11 @@ const ShowProducts = () => {
               onClick={() => deleteProduct(val.product_id)}>
                 Delete
                 </button>
-              
+              <button className="bt1"
+              onClick={() => updateProduct(val.product_id)}>
+                Update
+                </button>
+            
               <button class="bt1"
               onClick={() => buyNow(val.product_id)}
               >

@@ -97,7 +97,7 @@ export const updateProduct = async (req: Request, res: Response) => {
         if (response)
             return res.status(200).json(response);
         else
-            return res.status(400).json({ message: "Customer not updated" });
+            return res.status(400).json({ message: "Product not updated" });
     } catch (error) {
         return res.status(404).json({ error: error })
     }
@@ -108,9 +108,9 @@ export const deleteProduct = async (req: Request, res: Response) => {
         const product_id = Number(req.params.product_id);
         const response = await execute<any>(ProductQueries.DeleteProduct, [product_id])
         if (response)
-            return res.status(200).json({ message: "Customer deleted successfully" });
+            return res.status(200).json({ message: "Product deleted successfully" });
         else
-            return res.status(400).json({ message: "Customer not deleted" });
+            return res.status(400).json({ message: "Product not deleted" });
     } catch (error) {
         return res.status(404).json({ error: error })
     }
